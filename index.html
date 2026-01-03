@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Desafío Condiciones</title>
+</head>
+<body>
+
+  <h2>Parte 1: Borde Imagen</h2>
+  <img id="imagen" src="Imagenes/buho.png" width="200" style="cursor: pointer;">
+  <hr>
+
+  <h2>Parte 2: Stickers</h2>
+
+  <div>
+    <img src="Stickers/enojado.png" width="200"><br>
+    <input type="number" id="sticker1" min="0" value="0">
+  </div>
+
+  <div>
+    <img src="Stickers/mal-trabajo.png" width="200" ><br> 
+    <input type="number" id="sticker2" min="0" value="0">
+  </div>
+
+  <div>
+    <img src="Stickers/objetivo-empresarial.png" width="200"><br>
+    <input type="number" id="sticker3" min="0" value="0">
+  </div>
+
+  <button onclick="contarStickers()">Verificar</button>
+  <p id="resultadoStickers"></p>
+
+  <hr>
+
+  <h2>Parte 3: Password</h2>
+
+  <select id="p1">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+  </select>
+
+  <select id="p2">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+  </select>
+
+  <select id="p3">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+  </select>
+
+  <button onclick="verificarPassword()">Ingresar</button>
+  <p id="resultadoPassword"></p>
+
+  <script>
+    const imagen = document.getElementById("imagen");
+    imagen.addEventListener("click", () => {
+      if (imagen.style.border === "2px solid red") {
+        imagen.style.border = "none";
+      } else {
+        imagen.style.border = "2px solid red";
+      }
+    });
+
+    function contarStickers() {
+      const s1 = Number(document.getElementById("sticker1").value);
+      const s2 = Number(document.getElementById("sticker2").value);
+      const s3 = Number(document.getElementById("sticker3").value);
+
+      const total = s1 + s2 + s3;
+      const resultado = document.getElementById("resultadoStickers");
+
+      if (total <= 10) {
+        resultado.innerText = `Llevas ${total} stickers`;
+      } else {
+        resultado.innerText = "Llevas demasiados stickers";
+      }
+    }
+
+    function verificarPassword() {
+      const p1 = document.getElementById("p1").value;
+      const p2 = document.getElementById("p2").value;
+      const p3 = document.getElementById("p3").value;
+
+      const password = p1 + p2 + p3;
+      const resultado = document.getElementById("resultadoPassword");
+
+      if (password === "911") {
+        resultado.innerText = "password 1 correcto";
+      } else if (password === "714") {
+        resultado.innerText = "password 2 correcto";
+      } else {
+        resultado.innerText = "password incorrecto";
+      }
+    }
+  </script>
+
+</body>
+</html>
